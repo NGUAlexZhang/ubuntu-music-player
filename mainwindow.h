@@ -5,6 +5,7 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QMessageBox>
+#include "aboutdialog.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

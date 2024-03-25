@@ -73,6 +73,9 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event){
 
 void MainWindow::on_pushButton_About_clicked()
 {
-    QMessageBox::information(this, "提示", "关于对话框", QMessageBox::Yes);
+    // QMessageBox::information(this, "提示", "关于对话框", QMessageBox::Yes);
+    AboutDialog *pAboutDialog = new AboutDialog();
+    //模态对话框
+    pAboutDialog->exec();
 }
 
