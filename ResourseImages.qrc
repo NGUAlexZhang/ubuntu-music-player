@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>dist/声音_实体.png</file>
+        <file>dist/静音.png</file>
+        <file>dist/停止.png</file>
+        <file>dist/暂停.png</file>
+        <file>dist/下一曲.png</file>
+        <file>dist/上一曲.png</file>
+        <file>dist/播放2.png</file>
+        <file>dist/搜索.png</file>
+        <file>dist/箭头_向右.png</file>
+        <file>dist/关于.png</file>
+        <file>dist/关闭.png</file>
+        <file>dist/文件夹.png</file>
+        <file>dist/A2.jpg</file>
+    </qresource>
+</RCC>
