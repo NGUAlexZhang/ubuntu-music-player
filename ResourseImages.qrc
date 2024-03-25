@@ -13,5 +13,7 @@
         <file>dist/关闭.png</file>
         <file>dist/文件夹.png</file>
         <file>dist/A2.jpg</file>
+        <file>dist/最小化.png</file>
+        <file>dist/ic_zoom_out_2.png</file>
     </qresource>
 </RCC>

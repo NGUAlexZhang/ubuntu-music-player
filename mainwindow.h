@@ -21,13 +21,15 @@ public:
     //自定义成员
 public:
     //重绘背景图
-    void painEvent(QPaintEvent *event);
+    void paintEvent(QPaintEvent *event);
 private slots:
     void on_pushButton_Exit_clicked();
 
     void on_pushButton_AddSong_clicked();
 
     void on_pushButton_PlaySong_clicked();
+
+    void on_pushButton_Minimize_clicked();
 
 private:
     Ui::MainWindow *ui;

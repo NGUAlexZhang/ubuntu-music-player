@@ -15,7 +15,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::painEvent(QPaintEvent *event){
+void MainWindow::paintEvent(QPaintEvent *event){
     QPainter qPainter(this);
     qPainter.drawPixmap(0, 0, width(), height(), QPixmap(":/new/prefix1/dist/A2.jpg"));
 }
@@ -35,5 +35,11 @@ void MainWindow::on_pushButton_AddSong_clicked()
 void MainWindow::on_pushButton_PlaySong_clicked()
 {
 
+}
+
+
+void MainWindow::on_pushButton_Minimize_clicked()
+{
+    this->setWindowState(Qt::WindowMinimized);
 }
 

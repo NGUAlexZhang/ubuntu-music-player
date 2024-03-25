@@ -6,22 +6,22 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>661</width>
-    <height>534</height>
+    <width>751</width>
+    <height>591</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true">background-color: rgb(222, 221, 218);</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton_About">
     <property name="geometry">
      <rect>
-      <x>530</x>
-      <y>10</y>
+      <x>520</x>
+      <y>30</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="pushButton_Exit">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>10</y>
+      <x>640</x>
+      <y>30</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -66,8 +66,8 @@
    <widget class="QPushButton" name="pushButton_St">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>80</y>
+      <x>80</x>
+      <y>120</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -76,6 +76,9 @@
      <font>
       <pointsize>-1</pointsize>
      </font>
+    </property>
+    <property name="cursor">
+     <cursorShape>ForbiddenCursor</cursorShape>
     </property>
     <property name="layoutDirection">
      <enum>Qt::RightToLeft</enum>
@@ -106,8 +109,8 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_Search">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>80</y>
+      <x>510</x>
+      <y>120</y>
       <width>161</width>
       <height>31</height>
      </rect>
@@ -140,8 +143,8 @@ color: black;</string>
    <widget class="QLineEdit" name="lineEdit_InputSongs">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>80</y>
+      <x>250</x>
+      <y>120</y>
       <width>251</width>
       <height>31</height>
      </rect>
@@ -156,8 +159,8 @@ color: black;</string>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>40</y>
+      <x>60</x>
+      <y>80</y>
       <width>631</width>
       <height>91</height>
      </rect>
@@ -169,8 +172,8 @@ color: black;</string>
    <widget class="QPlainTextEdit" name="plainTextEdit">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>170</y>
+      <x>70</x>
+      <y>190</y>
       <width>611</width>
       <height>191</height>
      </rect>
@@ -179,8 +182,8 @@ color: black;</string>
    <widget class="QGroupBox" name="groupBox_SongList">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>140</y>
+      <x>60</x>
+      <y>160</y>
       <width>631</width>
       <height>231</height>
      </rect>
@@ -195,8 +198,8 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_AddSong">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>450</y>
+      <x>80</x>
+      <y>470</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -224,8 +227,8 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_PlaySong">
     <property name="geometry">
      <rect>
-      <x>90</x>
-      <y>450</y>
+      <x>140</x>
+      <y>470</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -253,8 +256,8 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_StopSong">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>450</y>
+      <x>270</x>
+      <y>470</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -282,8 +285,8 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_PreviousSong">
     <property name="geometry">
      <rect>
-      <x>290</x>
-      <y>450</y>
+      <x>340</x>
+      <y>470</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -311,8 +314,8 @@ color: black;</string>
    <widget class="QPushButton" name="pushButton_NextSong">
     <property name="geometry">
      <rect>
-      <x>360</x>
-      <y>450</y>
+      <x>410</x>
+      <y>470</y>
       <width>51</width>
       <height>31</height>
      </rect>
@@ -340,8 +343,8 @@ color: black;</string>
    <widget class="QGroupBox" name="groupBox_3">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>380</y>
+      <x>60</x>
+      <y>400</y>
       <width>631</width>
       <height>141</height>
      </rect>
@@ -368,6 +371,14 @@ color: black;</string>
        <height>21</height>
       </rect>
      </property>
+     <property name="styleSheet">
+      <string notr="true">		height: 12px; 
+		left: 0px; 
+		right: 0px; 
+		border:0px; 
+border-radius:6px;
+background:rgba(0,0,0,50);</string>
+     </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
      </property>
@@ -378,8 +389,16 @@ color: black;</string>
        <x>420</x>
        <y>70</y>
        <width>121</width>
-       <height>21</height>
+       <height>31</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">		height: 12px; 
+		left: 0px; 
+		right: 0px; 
+		border:0px; 
+border-radius:6px;
+background:rgba(0,0,0,50);</string>
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -393,6 +412,9 @@ color: black;</string>
        <width>51</width>
        <height>31</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">font-size: 14px;
@@ -444,6 +466,29 @@ color: black;</string>
      </property>
     </widget>
    </widget>
+   <widget class="QPushButton" name="pushButton_Minimize">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>30</y>
+      <width>51</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset resource="ResourseImages.qrc">
+      <normaloff>:/new/prefix1/dist/ic_zoom_out_2.png</normaloff>:/new/prefix1/dist/ic_zoom_out_2.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
+    </property>
+   </widget>
    <zorder>groupBox_3</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton_About</zorder>
@@ -458,6 +503,7 @@ color: black;</string>
    <zorder>pushButton_StopSong</zorder>
    <zorder>pushButton_PreviousSong</zorder>
    <zorder>pushButton_NextSong</zorder>
+   <zorder>pushButton_Minimize</zorder>
   </widget>
  </widget>
  <resources>
