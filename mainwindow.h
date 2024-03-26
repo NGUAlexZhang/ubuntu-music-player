@@ -5,7 +5,16 @@
 #include <QPainter>
 #include <QMouseEvent>
 #include <QMessageBox>
-#include "aboutdialog.h"
+#include <QNetworkAccessManager>
+#include <QNetworkReply>
+#include <QtMultimedia/QMediaPlayer>
+#include <QtMultimediaWidgets>
+#include <QTextBlock>
+#include <QTimer>
+#include <QFileDialog>
+#include <QJsonParseError>
+#include <QJsonObject>
+#include <QLCDNumber>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,6 +29,15 @@ private:
     bool m_MouseDrag;
     QPointF mouseStartPoint;//鼠标位置
     QPoint windowTopleftPoint;//窗口初始位置
+    QMediaPlayer *playerObject;//播放器
+    QByteArray qByteArraySearchInfo;//接收网络请求内容
+    QString strLocalMusicPath;//本地音乐路径
+    int i_musicID, i_pos;//歌曲id
+    QString musicName,singerName;//歌曲歌手名字
+    QTextDocument *docTextObject;//富文本
+    QTextBlock *qTextLine;//处理文本块的指针
+    QNetworkAccessManager *networkAccessManager;
+
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -33,6 +51,13 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+
+public slots:
+    void handleDataBackFunc(QNetworkReply *pReply);
+    // void hanleLCDNumberTimeChangeFunc(qint64 duration);
+    // void handleProgressTimeChangeFunc(qint64 duration);
+    // void handleSliderChangeFunc(qint64 position);
+
 private slots:
     void on_pushButton_Exit_clicked();
 
@@ -43,6 +68,8 @@ private slots:
     void on_pushButton_Minimize_clicked();
 
     void on_pushButton_About_clicked();
+
+    void on_pushButton_Search_clicked();
 
 private:
     Ui::MainWindow *ui;

@@ -63,104 +63,11 @@
      </size>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_St">
-    <property name="geometry">
-     <rect>
-      <x>60</x>
-      <y>100</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
-    <property name="cursor">
-     <cursorShape>ForbiddenCursor</cursorShape>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::RightToLeft</enum>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 14px;
-color: rgb(255, 255, 255);
-background-color: rgba(255, 255, 255, 50);
-color: black;</string>
-    </property>
-    <property name="text">
-     <string>动手搜一搜</string>
-    </property>
-    <property name="icon">
-     <iconset resource="ResourseImages.qrc">
-      <normaloff>:/new/prefix1/dist/箭头_向右.png</normaloff>:/new/prefix1/dist/箭头_向右.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>32</width>
-      <height>32</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="pushButton_Search">
-    <property name="geometry">
-     <rect>
-      <x>490</x>
-      <y>100</y>
-      <width>161</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>-1</pointsize>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font-size: 14px;
-color: rgb(255, 255, 255);
-background-color: rgba(255, 255, 255, 50);
-color: black;</string>
-    </property>
-    <property name="text">
-     <string>Search...</string>
-    </property>
-    <property name="icon">
-     <iconset resource="ResourseImages.qrc">
-      <normaloff>:/new/prefix1/dist/搜索.png</normaloff>:/new/prefix1/dist/搜索.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>24</width>
-      <height>24</height>
-     </size>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_InputSongs">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>100</y>
-      <width>251</width>
-      <height>31</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: black</string>
-    </property>
-    <property name="text">
-     <string>千千阙歌 陈慧娴</string>
-    </property>
-   </widget>
    <widget class="QGroupBox" name="groupBox">
     <property name="geometry">
      <rect>
       <x>40</x>
-      <y>60</y>
+      <y>50</y>
       <width>631</width>
       <height>91</height>
      </rect>
@@ -168,16 +75,99 @@ color: black;</string>
     <property name="title">
      <string/>
     </property>
-   </widget>
-   <widget class="QPlainTextEdit" name="plainTextEdit">
-    <property name="geometry">
-     <rect>
-      <x>50</x>
-      <y>170</y>
-      <width>611</width>
-      <height>191</height>
-     </rect>
-    </property>
+    <widget class="QPushButton" name="pushButton_St">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="cursor">
+      <cursorShape>ForbiddenCursor</cursorShape>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::RightToLeft</enum>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 14px;
+color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 50);
+color: black;</string>
+     </property>
+     <property name="text">
+      <string>动手搜一搜</string>
+     </property>
+     <property name="icon">
+      <iconset resource="ResourseImages.qrc">
+       <normaloff>:/new/prefix1/dist/箭头_向右.png</normaloff>:/new/prefix1/dist/箭头_向右.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>32</width>
+       <height>32</height>
+      </size>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="lineEdit_InputSongs">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>30</y>
+       <width>251</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: black</string>
+     </property>
+     <property name="text">
+      <string>千千阙歌 陈慧娴</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_Search">
+     <property name="geometry">
+      <rect>
+       <x>460</x>
+       <y>30</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>-1</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font-size: 14px;
+color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255, 50);
+color: black;</string>
+     </property>
+     <property name="text">
+      <string>Search...</string>
+     </property>
+     <property name="icon">
+      <iconset resource="ResourseImages.qrc">
+       <normaloff>:/new/prefix1/dist/搜索.png</normaloff>:/new/prefix1/dist/搜索.png</iconset>
+     </property>
+     <property name="iconSize">
+      <size>
+       <width>24</width>
+       <height>24</height>
+      </size>
+     </property>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_SongList">
     <property name="geometry">
@@ -194,6 +184,16 @@ color: black;</string>
     <property name="title">
      <string>   在线音乐列表</string>
     </property>
+    <widget class="QPlainTextEdit" name="plainTextEdit_SongList">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>30</y>
+       <width>611</width>
+       <height>191</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="pushButton_AddSong">
     <property name="geometry">
@@ -362,7 +362,7 @@ color: black;</string>
       </rect>
      </property>
     </widget>
-    <widget class="QSlider" name="horizontalSlider_PlayProcess">
+    <widget class="QSlider" name="horizontalSlider_PlayProgress">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -493,10 +493,6 @@ color: black;</string>
    <zorder>groupBox</zorder>
    <zorder>pushButton_About</zorder>
    <zorder>pushButton_Exit</zorder>
-   <zorder>pushButton_St</zorder>
-   <zorder>pushButton_Search</zorder>
-   <zorder>lineEdit_InputSongs</zorder>
-   <zorder>plainTextEdit</zorder>
    <zorder>groupBox_SongList</zorder>
    <zorder>pushButton_AddSong</zorder>
    <zorder>pushButton_PlaySong</zorder>

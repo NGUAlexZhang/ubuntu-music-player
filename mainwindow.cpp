@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "./aboutdialog.h"
 #include <QDebug>
+
 #pragma execution_character_set("utf-8")
 
 MainWindow::MainWindow(QWidget *parent)
@@ -10,8 +12,21 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     //去掉窗口标题
     this->setWindowFlag(Qt::FramelessWindowHint);
-    // setMouseTracking(true);
-    // ui->centralwidget->setMouseTracking(true);
+
+    this->setFixedSize(this->width(), this->height());
+    ui->lineEdit_InputSongs->setFocus();//设置焦点
+
+    networkAccessManager = new QNetworkAccessManager(this);
+
+    i_pos = 0;
+
+    docTextObject = ui->plainTextEdit_SongList->document();
+    ui->plainTextEdit_SongList->setReadOnly(true);
+
+    playerObject = new QMediaPlayer(this);
+
+    // playerObject->setSource();
+    connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleDataBackFunc(QNetworkReply*)));
 }
 
 MainWindow::~MainWindow()
@@ -22,6 +37,32 @@ MainWindow::~MainWindow()
 void MainWindow::paintEvent(QPaintEvent *event){
     QPainter qPainter(this);
     qPainter.drawPixmap(rect(), QPixmap(":/new/prefix1/dist/A2.jpg"), QRect());
+}
+
+void MainWindow::handleDataBackFunc(QNetworkReply *pReply){
+    qByteArraySearchInfo = pReply->readAll();
+    QJsonParseError jsonErrorParser;
+    QJsonDocument jsonRecv = QJsonDocument::fromJson(qByteArraySearchInfo, &jsonErrorParser);
+
+    if(jsonErrorParser.error != QJsonParseError::NoError){
+        return;
+    }
+    QJsonObject totalJson = jsonRecv.object();
+    QList keys = totalJson.keys();
+    if(keys.contains("result")){
+        ui->plainTextEdit_SongList->clear();
+        QJsonObject resultObjects = totalJson["result"].toObject();
+        if(resultObjects.contains("songs")){
+            QJsonArray jsonArray = resultObjects["songs"].toArray();
+            for(auto song : jsonArray){
+                QJsonObject songObject = song.toObject();
+                QString songName = songObject["name"].toString();
+                QString artistName = songObject["artists"].toArray()[0].toObject()["name"].toString();
+                ui->plainTextEdit_SongList->appendPlainText(songName + "   -   " + artistName);
+            }
+        }
+        ui->plainTextEdit_SongList->verticalScrollBar()->setValue(0);
+    }
 }
 
 //关闭窗口
@@ -77,5 +118,17 @@ void MainWindow::on_pushButton_About_clicked()
     AboutDialog *pAboutDialog = new AboutDialog();
     //模态对话框
     pAboutDialog->exec();
+}
+
+
+void MainWindow::on_pushButton_Search_clicked()
+{
+    QString str1, str2;
+    str1 = ui->lineEdit_InputSongs->text();
+    str2 = "https://netease.project.ac.cn/search?keywords=" + str1;
+    QNetworkRequest networkRequest;
+    networkRequest.setUrl(str2);
+    networkAccessManager->get(networkRequest);
+    // QMessageBox::information(this, "DEBUG", str1, QMessageBox::Yes);
 }
 
