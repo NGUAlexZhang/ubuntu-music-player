@@ -30,8 +30,9 @@ MainWindow::MainWindow(QWidget *parent)
     audioOutput->setVolume(50);
     // playerObject->setSource();
     connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleDataBackFunc(QNetworkReply*)));
-    connect(playerObject, SIGNAL(positionChanged(qint64)), this, SLOT(handleProgressTimeChangeFunc(qint64)));
+    connect(playerObject, SIGNAL(durationChanged(qint64)), this, SLOT(handleProgressTimeChangeFunc(qint64)));
     connect(playerObject, SIGNAL(positionChanged(qint64)), this, SLOT(handleLCDNumberTimeChangeFunc(qint64)));
+    connect(playerObject, SIGNAL(positionChanged(qint64)), this, SLOT(handleChangeSliderFunc(qint64)));
     connect(musicUrlGeter, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleMusicUrl(QNetworkReply*)));
 }
 
@@ -46,7 +47,12 @@ void MainWindow::paintEvent(QPaintEvent *event){
 }
 
 void MainWindow::handleProgressTimeChangeFunc(qint64 duration){
+    ui->horizontalSlider_PlayProgress->setMaximum(duration);
+}
 
+void MainWindow::handleChangeSliderFunc(qint64 duration){
+    if(ui->horizontalSlider_PlayProgress->isSliderDown()) return;
+    ui->horizontalSlider_PlayProgress->setSliderPosition(duration);
 }
 
 void MainWindow::handleLCDNumberTimeChangeFunc(qint64 duration){
@@ -228,11 +234,15 @@ void MainWindow::on_pushButton_Mute_clicked()
     if(audioOutput->isMuted()){
         audioOutput->setMuted(0);
         ui->pushButton_Mute->setIcon(QIcon(":/new/prefix1/dist/声音_实体.png"));
-
-
     }
     else{
         audioOutput->setMuted(1);
         ui->pushButton_Mute->setIcon(QIcon(":/new/prefix1/dist/mute.png"));
     }
 }
+
+void MainWindow::on_horizontalSlider_PlayProgress_valueChanged(int value){
+    // if(!playerObject->isPlaying()) return;
+    // playerObject->setPosition(value);
+}
+

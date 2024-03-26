@@ -61,7 +61,7 @@ public slots:
     void handleMusicUrl(QNetworkReply *pReply);
     void handleLCDNumberTimeChangeFunc(qint64 duration);
     void handleProgressTimeChangeFunc(qint64 duration);
-    // void handleSliderChangeFunc(qint64 position);
+    void handleChangeSliderFunc(qint64 position);
 
 private slots:
     void on_pushButton_Exit_clicked();
@@ -83,6 +83,8 @@ private slots:
     void on_pushButton_NextSong_clicked();
 
     void on_pushButton_Mute_clicked();
+
+    void on_horizontalSlider_PlayProgress_valueChanged(int value);
 
 private:
     Ui::MainWindow *ui;
