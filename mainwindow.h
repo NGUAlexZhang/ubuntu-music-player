@@ -30,14 +30,15 @@ private:
     QPointF mouseStartPoint;//鼠标位置
     QPoint windowTopleftPoint;//窗口初始位置
     QMediaPlayer *playerObject;//播放器
+    QAudioOutput *audioOutput;
     QByteArray qByteArraySearchInfo;//接收网络请求内容
     QString strLocalMusicPath;//本地音乐路径
     int i_musicID, i_pos;//歌曲id
     QString musicName,singerName;//歌曲歌手名字
     QTextDocument *docTextObject;//富文本
     QTextBlock *qTextLine;//处理文本块的指针
-    QNetworkAccessManager *networkAccessManager;
-
+    QNetworkAccessManager *networkAccessManager;//send get music request
+    QNetworkAccessManager *musicUrlGeter;//send get music url by id request
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -51,9 +52,11 @@ public:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent *event);
+    void playMusicById(const qint64& musicId);
 
 public slots:
     void handleDataBackFunc(QNetworkReply *pReply);
+    void handleMusicUrl(QNetworkReply *pReply);
     // void hanleLCDNumberTimeChangeFunc(qint64 duration);
     // void handleProgressTimeChangeFunc(qint64 duration);
     // void handleSliderChangeFunc(qint64 position);
