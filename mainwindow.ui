@@ -499,6 +499,22 @@ color: black;</string>
      </size>
     </property>
    </widget>
+   <widget class="QLabel" name="label_NowPlayingSong">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>16</y>
+      <width>391</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
    <zorder>groupBox_3</zorder>
    <zorder>groupBox</zorder>
    <zorder>pushButton_About</zorder>
@@ -510,6 +526,7 @@ color: black;</string>
    <zorder>pushButton_PreviousSong</zorder>
    <zorder>pushButton_NextSong</zorder>
    <zorder>pushButton_Minimize</zorder>
+   <zorder>label_NowPlayingSong</zorder>
   </widget>
  </widget>
  <resources>

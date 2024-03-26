@@ -83,6 +83,7 @@ void MainWindow::handleDataBackFunc(QNetworkReply *pReply){
         QJsonObject resultObjects = totalJson["result"].toObject();
         if(resultObjects.contains("songs")){
             QJsonArray jsonArray = resultObjects["songs"].toArray();
+            bool flag = 0;
             for(auto song : jsonArray){
 
                 QJsonObject songObject = song.toObject();
@@ -92,6 +93,11 @@ void MainWindow::handleDataBackFunc(QNetworkReply *pReply){
                 musicIdList->append(musicId);
                 QString artistName = songObject["artists"].toArray()[0].toObject()["name"].toString();
                 ui->plainTextEdit_SongList->appendPlainText(songName + "   -   " + artistName);
+                if(!flag){
+                    auto nowPlayingSongName = ui->plainTextEdit_SongList->document()->findBlockByLineNumber(0).text();
+                    ui->label_NowPlayingSong->setText(nowPlayingSongName);
+                    flag = 1;
+                }
             }
         }
         ui->plainTextEdit_SongList->verticalScrollBar()->setValue(0);
@@ -212,6 +218,8 @@ void MainWindow::on_pushButton_PreviousSong_clicked()
         i_pos = musicIdList->size();
     }
     playMusicById(musicIdList->at(i_pos));
+    auto nowPlayingSongName = ui->plainTextEdit_SongList->document()->findBlockByLineNumber(i_pos).text();
+    ui->label_NowPlayingSong->setText(nowPlayingSongName);
     nowPlayingId = musicIdList->at(i_pos);
 }
 
@@ -226,6 +234,8 @@ void MainWindow::on_pushButton_NextSong_clicked()
         i_pos = 0;
     }
     playMusicById(musicIdList->at(i_pos));
+    auto nowPlayingSongName = ui->plainTextEdit_SongList->document()->findBlockByLineNumber(i_pos).text();
+    ui->label_NowPlayingSong->setText(nowPlayingSongName);
     nowPlayingId = musicIdList->at(i_pos);
 }
 
