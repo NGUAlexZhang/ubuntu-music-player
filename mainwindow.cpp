@@ -18,7 +18,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     networkAccessManager = new QNetworkAccessManager(this);
     musicUrlGeter = new QNetworkAccessManager(this);
-    i_pos = 0;
+    musicIdList = new QList<qint64>;
+    i_pos = 0, nowPlayingId = -1;
 
     docTextObject = ui->plainTextEdit_SongList->document();
     ui->plainTextEdit_SongList->setReadOnly(true);
@@ -54,8 +55,9 @@ void MainWindow::handleDataBackFunc(QNetworkReply *pReply){
     QList keys = totalJson.keys();
     if(keys.contains("result")){
         ui->plainTextEdit_SongList->clear();
+        musicIdList->clear();
+        i_pos = 0;
         QJsonObject resultObjects = totalJson["result"].toObject();
-        int cnt = 0;
         if(resultObjects.contains("songs")){
             QJsonArray jsonArray = resultObjects["songs"].toArray();
             for(auto song : jsonArray){
@@ -64,20 +66,21 @@ void MainWindow::handleDataBackFunc(QNetworkReply *pReply){
                 QString songName = songObject["name"].toString();
 
                 auto musicId = songObject["id"].toInteger();
+                musicIdList->append(musicId);
                 QString artistName = songObject["artists"].toArray()[0].toObject()["name"].toString();
-                if(!cnt){
-                    playMusicById(musicId);
-                    cnt++;
-                }
                 ui->plainTextEdit_SongList->appendPlainText(songName + "   -   " + artistName);
             }
         }
         ui->plainTextEdit_SongList->verticalScrollBar()->setValue(0);
-
     }
 }
 
 void MainWindow::playMusicById(const qint64& musicId){
+    if(musicId == -1) return;
+    if(musicId == nowPlayingId){
+        playerObject->play();
+        return;
+    }
     QString urlStr = QString("https://music.163.com/song/media/outer/url?id=%0.mp3").arg(musicId);
     QNetworkRequest networkRequest;
     networkRequest.setUrl(urlStr);
@@ -85,12 +88,10 @@ void MainWindow::playMusicById(const qint64& musicId){
 }
 
 void MainWindow::handleMusicUrl(QNetworkReply* pReplay){
-    // auto headerLists = pReplay->rawHeader();
     if(pReplay->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt() != 302){
         QMessageBox::information(this, "暂不支持VIP音乐播放","",QMessageBox::Yes);
         return;
     }
-    // auto musicUrl = pReplay->attribute(QNetworkRequest::RedirectionTargetAttribute).toUrl();
 
     auto qByteArrayGetInfo = pReplay->rawHeader("location");
     QString musicUrlStr = qByteArrayGetInfo;
@@ -116,7 +117,11 @@ void MainWindow::on_pushButton_AddSong_clicked()
 
 void MainWindow::on_pushButton_PlaySong_clicked()
 {
-    // playerObject->
+    if(musicIdList->empty()){
+        return;
+    }
+    playMusicById(musicIdList->at(i_pos));
+    nowPlayingId = musicIdList->at(i_pos);
 }
 
 
@@ -165,5 +170,11 @@ void MainWindow::on_pushButton_Search_clicked()
     QNetworkRequest networkRequest;
     networkRequest.setUrl(str2);
     networkAccessManager->get(networkRequest);
+}
+
+
+void MainWindow::on_pushButton_PauseSong_clicked()
+{
+    playerObject->pause();
 }
 

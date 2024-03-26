@@ -39,6 +39,8 @@ private:
     QTextBlock *qTextLine;//处理文本块的指针
     QNetworkAccessManager *networkAccessManager;//send get music request
     QNetworkAccessManager *musicUrlGeter;//send get music url by id request
+    QList<qint64> *musicIdList;
+    qint64 nowPlayingId;
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -73,6 +75,8 @@ private slots:
     void on_pushButton_About_clicked();
 
     void on_pushButton_Search_clicked();
+
+    void on_pushButton_PauseSong_clicked();
 
 private:
     Ui::MainWindow *ui;
