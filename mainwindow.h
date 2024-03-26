@@ -59,8 +59,8 @@ public:
 public slots:
     void handleDataBackFunc(QNetworkReply *pReply);
     void handleMusicUrl(QNetworkReply *pReply);
-    // void hanleLCDNumberTimeChangeFunc(qint64 duration);
-    // void handleProgressTimeChangeFunc(qint64 duration);
+    void handleLCDNumberTimeChangeFunc(qint64 duration);
+    void handleProgressTimeChangeFunc(qint64 duration);
     // void handleSliderChangeFunc(qint64 position);
 
 private slots:
@@ -77,6 +77,10 @@ private slots:
     void on_pushButton_Search_clicked();
 
     void on_pushButton_PauseSong_clicked();
+
+    void on_pushButton_PreviousSong_clicked();
+
+    void on_pushButton_NextSong_clicked();
 
 private:
     Ui::MainWindow *ui;

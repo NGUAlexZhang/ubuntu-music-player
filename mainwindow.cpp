@@ -30,6 +30,8 @@ MainWindow::MainWindow(QWidget *parent)
     audioOutput->setVolume(50);
     // playerObject->setSource();
     connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleDataBackFunc(QNetworkReply*)));
+    connect(playerObject, SIGNAL(positionChanged(qint64)), this, SLOT(handleProgressTimeChangeFunc(qint64)));
+    connect(playerObject, SIGNAL(positionChanged(qint64)), this, SLOT(handleLCDNumberTimeChangeFunc(qint64)));
     connect(musicUrlGeter, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleMusicUrl(QNetworkReply*)));
 }
 
@@ -41,6 +43,20 @@ MainWindow::~MainWindow()
 void MainWindow::paintEvent(QPaintEvent *event){
     QPainter qPainter(this);
     qPainter.drawPixmap(rect(), QPixmap(":/new/prefix1/dist/A2.jpg"), QRect());
+}
+
+void MainWindow::handleProgressTimeChangeFunc(qint64 duration){
+
+}
+
+void MainWindow::handleLCDNumberTimeChangeFunc(qint64 duration){
+    duration /= 1000;
+    int nowHour = int(duration / 3600);
+    int nowMinute = int((duration - nowHour * 3600) / 60);
+    int nowSecond = int(duration - nowHour * 3600 - nowMinute * 60);
+    nowSecond %= 60;
+    QString songTime = QString::asprintf("%d:%d", nowMinute, nowSecond);
+    ui->lcdNumber_PlayTime->display(songTime);
 }
 
 void MainWindow::handleDataBackFunc(QNetworkReply *pReply){
@@ -176,5 +192,33 @@ void MainWindow::on_pushButton_Search_clicked()
 void MainWindow::on_pushButton_PauseSong_clicked()
 {
     playerObject->pause();
+}
+
+
+void MainWindow::on_pushButton_PreviousSong_clicked()
+{
+    if(musicIdList->empty()){
+        return;
+    }
+    i_pos--;
+    if(i_pos == -1){
+        i_pos = musicIdList->size();
+    }
+    playMusicById(musicIdList->at(i_pos));
+    nowPlayingId = musicIdList->at(i_pos);
+}
+
+
+void MainWindow::on_pushButton_NextSong_clicked()
+{
+    if(musicIdList->empty()){
+        return;
+    }
+    i_pos++;
+    if(i_pos == musicIdList->size()){
+        i_pos = 0;
+    }
+    playMusicById(musicIdList->at(i_pos));
+    nowPlayingId = musicIdList->at(i_pos);
 }
 
