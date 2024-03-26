@@ -222,3 +222,17 @@ void MainWindow::on_pushButton_NextSong_clicked()
     nowPlayingId = musicIdList->at(i_pos);
 }
 
+
+void MainWindow::on_pushButton_Mute_clicked()
+{
+    if(audioOutput->isMuted()){
+        audioOutput->setMuted(0);
+        ui->pushButton_Mute->setIcon(QIcon(":/new/prefix1/dist/声音_实体.png"));
+
+
+    }
+    else{
+        audioOutput->setMuted(1);
+        ui->pushButton_Mute->setIcon(QIcon(":/new/prefix1/dist/mute.png"));
+    }
+}

@@ -82,6 +82,8 @@ private slots:
 
     void on_pushButton_NextSong_clicked();
 
+    void on_pushButton_Mute_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

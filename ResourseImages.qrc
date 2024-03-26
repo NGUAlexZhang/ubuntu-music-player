@@ -15,5 +15,6 @@
         <file>dist/A2.jpg</file>
         <file>dist/最小化.png</file>
         <file>dist/ic_zoom_out_2.png</file>
+        <file>dist/mute.png</file>
     </qresource>
 </RCC>
