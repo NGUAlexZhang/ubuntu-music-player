@@ -28,6 +28,7 @@ MainWindow::MainWindow(QWidget *parent)
     audioOutput = new QAudioOutput();
     playerObject->setAudioOutput(audioOutput);
     audioOutput->setVolume(50);
+    ui->horizontalSlider_Volume->setValue(50);
     // playerObject->setSource();
     connect(networkAccessManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(handleDataBackFunc(QNetworkReply*)));
     connect(playerObject, SIGNAL(durationChanged(qint64)), this, SLOT(handleProgressTimeChangeFunc(qint64)));
@@ -244,5 +245,11 @@ void MainWindow::on_pushButton_Mute_clicked()
 void MainWindow::on_horizontalSlider_PlayProgress_valueChanged(int value){
     // if(!playerObject->isPlaying()) return;
     // playerObject->setPosition(value);
+}
+
+
+void MainWindow::on_horizontalSlider_Volume_valueChanged(int value)
+{
+    audioOutput->setVolume(value);
 }
 

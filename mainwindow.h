@@ -86,6 +86,8 @@ private slots:
 
     void on_horizontalSlider_PlayProgress_valueChanged(int value);
 
+    void on_horizontalSlider_Volume_valueChanged(int value);
+
 private:
     Ui::MainWindow *ui;
 };
